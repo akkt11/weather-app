@@ -1,10 +1,11 @@
+import { Typography } from "../Typography/Typography";
 import style from "./Weather.module.scss";
 
 export const Weather = () => {
   return (
     <section className={style.weather}>
       <div className={style.weatherContainer}>
-        <h1>Weather</h1>
+        <Typography variant="h1">26°C</Typography>
       </div>
     </section>
   );
