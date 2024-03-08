@@ -1,0 +1,30 @@
+// Container Dimensions
+$desktopContainerWidth: 1358px;
+$mobileContainerWidth: none;
+$containerPadding: 15px;
+
+// Typography
+$baseFontFamily: "Inter", sans-serif;
+
+// FontWeight
+$weightRegular: 400;
+$weightMedium: 500;
+$weightSemiBold: 600;
+$weightBold: 700;
+
+// Color
+$colorPrimary: #d69e36;
+$colorSecondary: #deab4d;
+
+// BaseColor
+$colorWhite: #ffffff;
+$colorBlack: #000000;
+$colorGrey: #403b45;
+
+// Define breakpoints
+$desktopBreakpoint: 1358px;
+$mobileBreakpoint: 767.98px;
+$tabletBreakpoint: 991.98px;
+
+// Animate
+$transitionDuration: 0.3s;

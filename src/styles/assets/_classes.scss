@@ -1,0 +1,34 @@
+@import "./variables";
+@import "./mixins";
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: $baseFontFamily;
+  color: $colorWhite;
+  background-color: $colorPrimary;
+}
+
+[class*="Container"] {
+  max-width: $desktopContainerWidth;
+  margin: 0 auto;
+  padding: 0 42px;
+}
+
+@include mobile {
+  [class*="Container"] {
+    max-width: $mobileContainerWidth;
+  }
+}
+
+%smoothscroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+%hidescroll {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
