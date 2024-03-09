@@ -1,0 +1,48 @@
+@import "../../styles/index.scss";
+
+.panel {
+  &Container {
+    display: flex;
+    gap: 32px;
+  }
+
+  &Slider {
+    display: none;
+  }
+
+  &Menu {
+    flex: 1 1 5%;
+    background-color: $colorSecondary;
+    border-radius: 40px;
+  }
+
+  &Forecast {
+    flex: 1 1 65%;
+    background-color: $colorSecondary;
+    border-radius: 40px;
+  }
+
+  &Condition {
+    flex: 1 1 30%;
+    background-color: $colorSecondary;
+    border-radius: 40px;
+  }
+
+  @include tablet {
+    &Container {
+      flex-direction: column;
+    }
+
+    &Slider {
+      display: block;
+    }
+
+    &Menu {
+      display: none;
+    }
+
+    &Condition {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.condition {
+  position: relative;
+  padding: 35px 15px 50px 15px;
+  height: 100%;
+
+  .day {
+    margin-bottom: 35px;
+    text-align: center;
+
+    &Slider {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      margin-bottom: 20px;
+    }
+
+    &Time {
+      padding-top: 60px;
+    }
+  }
+
+  .air {
+    &Info {
+      display: flex;
+      margin-top: 20px;
+      gap: 8px;
+    }
+
+    &Description {
+      margin-top: 4px;
+    }
+  }
+}

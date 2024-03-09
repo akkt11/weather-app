@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { Weather } from "../Weather/Weather";
-import { Forecast } from "../Forecast/Forecast";
+import { Overview } from "../Overview/Overview";
+import { Panel } from "../Panel/Panel";
 
 export const Home: FC = () => {
   return (
-    <>
-      <Weather />
-      <Forecast />
-    </>
+    <main>
+      <Overview />
+      <Panel />
+    </main>
   );
 };

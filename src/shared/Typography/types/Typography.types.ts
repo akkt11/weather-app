@@ -18,7 +18,7 @@ export type TypographyVariants =
   | "h4"
   | "h5"
   | "h6"
-  | "body"
+  | "paragraph"
   | "caption";
 
 export type ColorVariants = "black" | "white" | "orange";

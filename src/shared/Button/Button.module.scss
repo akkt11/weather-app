@@ -1,4 +1,4 @@
-@import "../../../styles/index.scss";
+@import "../../styles/index.scss";
 
 .button {
   &-common-styles {
@@ -38,6 +38,8 @@
 
   &-icon-btn {
     @include flex;
+    flex-direction: column;
     cursor: pointer;
+    color: $colorWhite;
   }
 }

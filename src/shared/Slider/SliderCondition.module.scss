@@ -1,0 +1,26 @@
+.slider {
+  &Slide {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .prev {
+    color: #f5b747;
+    width: 0;
+    top: 18px;
+
+    &::after {
+      font-size: 25px;
+    }
+  }
+  .next {
+    color: #f5b747;
+    width: 0;
+    top: 18px;
+
+    &::after {
+      font-size: 25px;
+    }
+  }
+}

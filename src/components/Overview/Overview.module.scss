@@ -1,0 +1,104 @@
+@import "../../styles/index.scss";
+
+.overview {
+  &Container {
+    display: flex;
+  }
+
+  &Info {
+    flex: 1 1 70%;
+    padding: 25px 60px;
+
+    .info {
+      max-width: 200px;
+
+      &Main {
+        padding-bottom: 100px;
+      }
+
+      &City {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 40px;
+
+        img {
+          display: none;
+        }
+
+        .city {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+
+      &Title {
+      }
+
+      &Image {
+        display: none;
+
+        svg {
+          width: 200px;
+          height: 200px;
+        }
+      }
+
+      &Description {
+      }
+    }
+  }
+
+  &Image {
+    flex: 1 1 30%;
+    padding: 25px 60px;
+  }
+
+  @include tablet {
+    margin-bottom: 32px;
+
+    &Info {
+      text-align: center;
+      padding: 0;
+    }
+
+    .info {
+      max-width: none;
+      padding: 15px 0;
+
+      &City {
+        justify-content: space-between;
+
+        img {
+          display: block;
+          border-radius: 100%;
+          width: 30px;
+          height: 30px;
+        }
+
+        .city {
+          &Title {
+            font-size: 20px;
+          }
+        }
+      }
+
+      &Main {
+        padding: 0;
+      }
+
+      &Title {
+        font-size: 24px;
+      }
+
+      &Image {
+        display: block;
+      }
+    }
+
+    &Image {
+      display: none;
+    }
+  }
+}
