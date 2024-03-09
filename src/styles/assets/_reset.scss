@@ -3,6 +3,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Prevent font size inflation */
@@ -47,6 +49,8 @@ button,
 input,
 label {
   line-height: 1.1;
+  background: transparent;
+  border: none;
 }
 
 /* Balance text wrapping on headings */

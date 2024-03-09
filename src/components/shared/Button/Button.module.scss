@@ -1,0 +1,43 @@
+@import "../../../styles/index.scss";
+
+.button {
+  &-common-styles {
+    cursor: pointer;
+    transition: $transitionDuration;
+    white-space: nowrap;
+  }
+
+  &-primary-btn {
+    @extend .button-common-styles;
+    background-color: $colorPrimary;
+    color: $colorBlack;
+
+    &:hover {
+      color: $colorWhite;
+    }
+  }
+
+  &-secondary-btn {
+    @extend .button-common-styles;
+    background-color: $colorSecondary;
+    color: $colorWhite;
+
+    &:hover {
+      color: $colorWhite;
+    }
+  }
+
+  &-link-btn {
+    @extend .button-common-styles;
+    color: $colorBlack;
+
+    &:hover {
+      color: $colorWhite;
+    }
+  }
+
+  &-icon-btn {
+    @include flex;
+    cursor: pointer;
+  }
+}

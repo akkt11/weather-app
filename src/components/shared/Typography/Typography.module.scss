@@ -1,51 +1,35 @@
-@import "../../styles/assets/variables";
+@import "../../../styles/index.scss";
 
 .h1 {
   font-size: 64px;
-
-  @extend .medium;
 }
 
 .h2 {
   font-size: 48px;
-
-  @extend .medium;
 }
 
 .h3 {
   font-size: 24px;
-
-  @extend .medium;
 }
 
 .h4 {
   font-size: 18px;
-
-  @extend .regular;
 }
 
 .h5 {
   font-size: 16px;
-
-  @extend .medium;
 }
 
 .h6 {
   font-size: 14px;
-
-  @extend .medium;
 }
 
 .body {
   font-size: 12px;
-
-  @extend .medium;
 }
 
 .span {
   font-size: 8px;
-
-  @extend .regular;
 }
 
 // Weight
