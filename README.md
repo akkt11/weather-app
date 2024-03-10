@@ -1,30 +1,46 @@
-# React + TypeScript + Vite
+# WeatherApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WeatherApp is an easy way to check what the current and future weather is, with a minimalistic/intuitive design.
 
-Currently, two official plugins are available:
+# Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search location**: See the weather for the city of your choice
+- **Favorites**: Save the city you want to see often
+- **24-Hour Forecast**: Detailed forecast for today using a graph
+- **Condition Panel**: Change days and see what's up with the AC
+- **Responsiveness**: A convenient way to view the weather using mobile devices
 
-## Expanding the ESLint configuration
+# Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [React](https://react.dev) - Framework
+- [Typescript](https://www.typescriptlang.org/) - Language
+- [SCSS](https://sass-scss.ru/guide/) - CSS
+- [React-Query](https://tanstack.com/query/latest/docs/framework/react/overview) - Fetch
+- [Axios](https://axios-http.com/ru/docs/intro) - HTTP client
+- [chart.js](https://www.chartjs.org/) - Chart
+- [swiper.js](https://swiperjs.com/) - Swiper
 
-- Configure the top-level `parserOptions` property like this:
+# Getting Started
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+#### 1. Clone the repository
+
+```
+git clone https://github.com/akkt11/weather-app
+cd weather-app
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 2. Install dependencies
+
+```
+yarn install
+```
+
+### 3. Run the dev server
+
+```
+yarn run dev
+```
+
+### 4. Open the app in your browser
+
+Visit http://localhost:3000 in your browser.
