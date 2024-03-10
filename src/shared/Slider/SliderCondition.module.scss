@@ -1,3 +1,5 @@
+@import "../../styles/index.scss";
+
 .slider {
   &Slide {
     display: flex;
@@ -21,6 +23,19 @@
 
     &::after {
       font-size: 25px;
+    }
+  }
+
+  @include tablet {
+    &Slide {
+      &Content {
+        font-size: 20px;
+      }
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }

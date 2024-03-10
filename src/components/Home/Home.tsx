@@ -4,9 +4,9 @@ import { Panel } from "../Panel/Panel";
 
 export const Home: FC = () => {
   return (
-    <main>
+    <>
       <Overview />
       <Panel />
-    </main>
+    </>
   );
 };

@@ -6,9 +6,10 @@ import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/css/effect-coverflow";
 import style from "./SliderCondition.module.scss";
+import { Typography } from "../Typography/Typography";
 
 export const SliderCondition: FC = () => {
-  const slides = Array.from({ length: 10 }).map(
+  const slides = Array.from({ length: 7 }).map(
     (el, index) => `Slide ${index + 1}`
   );
 
@@ -43,7 +44,9 @@ export const SliderCondition: FC = () => {
     >
       {slides.map((slideContent) => (
         <SwiperSlide className={style.sliderSlide}>
-          {slideContent}
+          <Typography variant="h4" className={style.sliderSlideContent}>
+            {slideContent}
+          </Typography>
           <Sun />
         </SwiperSlide>
       ))}

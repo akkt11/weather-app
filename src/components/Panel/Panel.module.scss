@@ -1,6 +1,8 @@
 @import "../../styles/index.scss";
 
 .panel {
+  height: 100%;
+
   &Container {
     display: flex;
     gap: 32px;
@@ -29,6 +31,14 @@
   }
 
   @include tablet {
+    &Container {
+      height: 100%;
+    }
+
+    &Forecast {
+      border-radius: 10px;
+    }
+
     &Container {
       flex-direction: column;
     }
