@@ -22,7 +22,7 @@ WeatherApp is an easy way to check what the current and future weather is, with 
 
 # Getting Started
 
-#### 1. Clone the repository
+### 1. Clone the repository
 
 ```
 git clone https://github.com/akkt11/weather-app
