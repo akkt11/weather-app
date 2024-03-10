@@ -2,7 +2,7 @@
 
 WeatherApp is an easy way to check what the current and future weather is, with a minimalistic/intuitive design.
 
-# Features
+## Features
 
 - **Search Location**: See the weather for the city of your choice
 - **Favorites**: Save the weather in the city you often watch
@@ -10,7 +10,7 @@ WeatherApp is an easy way to check what the current and future weather is, with 
 - **Condition Panel**: Change days and see what's up with the AC
 - **Responsiveness**: A convenient way to view the weather using mobile devices
 
-# Tech Stack
+## Tech Stack
 
 - [React](https://react.dev) - Framework
 - [Typescript](https://www.typescriptlang.org/) - Language
@@ -20,7 +20,7 @@ WeatherApp is an easy way to check what the current and future weather is, with 
 - [chart.js](https://www.chartjs.org/) - Visualization
 - [swiper.js](https://swiperjs.com/) - Carousel
 
-# Getting Started
+## Getting Started
 
 ### 1. Clone the repository
 
