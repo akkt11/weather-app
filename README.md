@@ -6,7 +6,7 @@ WeatherApp is an easy way to check what the current and future weather is, with 
 
 - **Search Location**: See the weather for the city of your choice
 - **Favorites**: Save the weather in the city you often watch
-- **24-Hour Forecast**: Detailed forecast for today using a graph
+- **24-Hour Forecast**: Detailed forecast for today using a carousel
 - **Condition Panel**: Change days and see what's up with the AC
 - **Responsiveness**: A convenient way to view the weather using mobile devices
 

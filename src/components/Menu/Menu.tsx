@@ -1,9 +1,9 @@
 import { FC } from "react";
 import style from "./Menu.module.scss";
-import { Typography } from "../../shared/Typography/Typography";
+import { Typography } from "../../shared/ui/Typography/Typography";
 import { Location } from "../../icons/Location";
 import { Setting } from "../../icons/Setting";
-import { Button } from "../../shared/Button/Button";
+import { Button } from "../../shared/ui/Button/Button";
 
 export const Menu: FC = () => {
   return (

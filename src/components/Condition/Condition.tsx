@@ -1,13 +1,17 @@
 import { FC } from "react";
-import { Typography } from "../../shared/Typography/Typography";
+import { Typography } from "../../shared/ui/Typography/Typography";
 import { Feel } from "../../icons/Feel";
 import { Wind } from "../../icons/Wind";
 import { Drop } from "../../icons/Drop";
 import { Sun } from "../../icons/Sun";
-import { SliderCondition } from "../../shared/Slider/SliderCondition";
+import { SliderCondition } from "./slider/SliderCondition";
 import style from "./Condition.module.scss";
+import { useWeather } from "../../store";
+import { capitalize, uppercase } from "../../shared/helper/stringFormat";
 
 export const Condition: FC = () => {
+  const weather = useWeather((state) => state.weather);
+
   return (
     <div className={style.condition}>
       <div className={style.day}>
@@ -23,7 +27,7 @@ export const Condition: FC = () => {
 
       <div className={style.air}>
         <Typography variant="h6" weight="bold">
-          air conditions
+          {uppercase("air conditions")}
         </Typography>
 
         <div className={style.airInfo}>
@@ -31,10 +35,10 @@ export const Condition: FC = () => {
 
           <div className={style.airDescription}>
             <Typography variant="paragraph" weight="medium">
-              real feel
+              {capitalize("real feel")}
             </Typography>
             <Typography variant="h5" weight="medium">
-              30°
+              {weather?.feels_like.day}
             </Typography>
           </div>
         </div>
@@ -44,10 +48,10 @@ export const Condition: FC = () => {
 
           <div className={style.airDescription}>
             <Typography variant="paragraph" weight="medium">
-              wind
+              {capitalize("wind")}
             </Typography>
             <Typography variant="h5" weight="medium">
-              0.8 km/hr
+              {`${weather?.wind_speed} km/hr`}
             </Typography>
           </div>
         </div>
@@ -57,10 +61,10 @@ export const Condition: FC = () => {
 
           <div className={style.airDescription}>
             <Typography variant="paragraph" weight="medium">
-              chance of rain
+              {capitalize("chance of rain")}
             </Typography>
             <Typography variant="h5" weight="medium">
-              2%
+              {`${weather?.rain} %`}
             </Typography>
           </div>
         </div>
@@ -70,10 +74,10 @@ export const Condition: FC = () => {
 
           <div className={style.airDescription}>
             <Typography variant="paragraph" weight="medium">
-              UV index
+              {capitalize("UV index")}
             </Typography>
             <Typography variant="h5" weight="medium">
-              4
+              {weather?.uvi}
             </Typography>
           </div>
         </div>

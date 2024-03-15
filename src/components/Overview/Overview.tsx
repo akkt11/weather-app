@@ -1,12 +1,19 @@
 import { FC } from "react";
 import { CloudSun } from "../../icons/CloudSun";
-import { Typography } from "../../shared/Typography/Typography";
+import { Typography } from "../../shared/ui/Typography/Typography";
 import { Location } from "../../icons/Location";
 import { Chevron } from "../../icons/Chevron/Chevron";
-import { Button } from "../../shared/Button/Button";
+import { Button } from "../../shared/ui/Button/Button";
+import { useWeather } from "../../store";
+import { dateToDMY, dateToWeekDay } from "../../shared/helper/convertDate";
 import style from "./Overview.module.scss";
 
 export const Overview: FC = () => {
+  const { weatherData, location } = useWeather((state) => ({
+    weatherData: state.weather,
+    location: state.location,
+  }));
+
   return (
     <section className={style.overview}>
       <div className={style.overviewContainer}>
@@ -22,7 +29,7 @@ export const Overview: FC = () => {
                     weight="medium"
                     className={style.cityTitle}
                   >
-                    Bishkek
+                    {location}
                   </Typography>
 
                   <Button type="icon">
@@ -41,7 +48,7 @@ export const Overview: FC = () => {
                 weight="medium"
                 className={style.infoTitle}
               >
-                Cloudy
+                {weatherData?.weather[0].main}
               </Typography>
             </div>
 
@@ -52,11 +59,15 @@ export const Overview: FC = () => {
             <div className={style.infoDescription}>
               <div>
                 <Typography variant="h1" weight="medium">
-                  26°C
+                  {`${weatherData?.temp.day}°C`}
                 </Typography>
               </div>
               <div>
-                <Typography variant="h4">Sunday | 12 Dec 2023</Typography>
+                <Typography variant="h4">
+                  {`${dateToWeekDay(weatherData?.dt)} | ${dateToDMY(
+                    weatherData?.dt
+                  )}`}
+                </Typography>
               </div>
             </div>
           </div>

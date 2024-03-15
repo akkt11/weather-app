@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Typography } from "../../shared/Typography/Typography";
+import { Typography } from "../../shared/ui/Typography/Typography";
 import { Line } from "react-chartjs-2";
 import { Chart } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
