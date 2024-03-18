@@ -1,6 +1,10 @@
 @import "../../styles/index.scss";
 
 .forecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 0 20px 0;
   height: 100%;
 
   &Time {
@@ -11,6 +15,19 @@
   }
 
   &Chart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  &Button {
+    max-width: 205px;
+    border-radius: 50px;
+    padding: 8px 43px;
+    margin: 0 auto;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
   @include tablet {

@@ -1,7 +1,8 @@
 @import "../../styles/index.scss";
 
 .overview {
-  margin-bottom: 32px;
+  padding: 30px 0 0 0;
+  height: 100%;
 
   &Container {
     display: flex;
@@ -9,35 +10,30 @@
 
   &Info {
     flex: 1 1 70%;
-    padding: 25px 60px;
+    padding: 0 60px;
 
-    .info {
+    .infoWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 30px;
+      height: 100%;
       max-width: 200px;
+    }
 
-      &Main {
-        padding-bottom: 100px;
-      }
-
+    .action {
       &City {
         display: flex;
         align-items: center;
         gap: 8px;
-        padding-bottom: 40px;
-
-        img {
-          display: none;
-        }
-
-        .city {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
       }
 
-      &Title {
+      &Image {
+        display: none;
       }
+    }
 
+    .main {
       &Image {
         display: none;
 
@@ -46,52 +42,46 @@
           height: 200px;
         }
       }
-
-      &Description {
-      }
     }
   }
 
   &Image {
     flex: 1 1 30%;
-    padding: 25px 60px;
+    padding: 0 60px;
   }
 
   @include tablet {
+    padding: 30px 0 0 0;
+
+    &Container {
+      height: 100%;
+    }
+
     &Info {
       text-align: center;
       padding: 0;
     }
 
-    .info {
+    .infoWrapper {
       max-width: none;
-      padding: 15px 0;
+    }
 
-      &City {
-        justify-content: space-between;
+    .action {
+      display: flex;
+      justify-content: space-between;
+
+      &Image {
+        display: block;
 
         img {
-          display: block;
           border-radius: 100%;
           width: 30px;
           height: 30px;
         }
-
-        .city {
-          &Title {
-            font-size: 20px;
-          }
-        }
       }
+    }
 
-      &Main {
-        padding: 0;
-      }
-
-      &Title {
-        font-size: 24px;
-      }
-
+    .main {
       &Image {
         display: block;
       }

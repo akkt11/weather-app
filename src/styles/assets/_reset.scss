@@ -12,7 +12,6 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  height: 100%;
 }
 
 /* Remove default margin in favour of better control in authored CSS */
@@ -36,8 +35,8 @@ ol[role="list"] {
 }
 
 /* Set core body defaults */
+html,
 body {
-  min-height: 100vh;
   height: 100%;
   line-height: 1.5;
 }

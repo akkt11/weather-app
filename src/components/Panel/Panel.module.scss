@@ -1,6 +1,7 @@
 @import "../../styles/index.scss";
 
 .panel {
+  padding: 40px 0 0 0;
   height: 100%;
 
   &Container {
@@ -13,13 +14,12 @@
   }
 
   &Menu {
-    flex: 1 1 5%;
     background-color: $colorSecondary;
     border-radius: 40px;
   }
 
   &Forecast {
-    flex: 1 1 65%;
+    flex: 1 1 70%;
     background-color: $colorSecondary;
     border-radius: 40px;
   }
@@ -28,6 +28,7 @@
     flex: 1 1 30%;
     background-color: $colorSecondary;
     border-radius: 40px;
+    padding: 35px 15px 35px 15px;
   }
 
   @include tablet {
