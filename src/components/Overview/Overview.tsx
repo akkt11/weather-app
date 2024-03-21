@@ -1,16 +1,16 @@
 import { FC } from "react";
-import { CloudSun } from "../../icons/CloudSun";
 import { Typography } from "../../shared/ui/Typography/Typography";
-import { Location } from "../../icons/Location";
-import { Chevron } from "../../icons/Chevron/Chevron";
+import { Location } from "../../icons/LocationIcon";
+import { Chevron } from "../../icons/ChevronIcon";
 import { Button } from "../../shared/ui/Button/Button";
-import { useWeather } from "../../store";
+import { useSelectedWeather } from "../../store";
 import { dateToDMY, dateToWeekDay } from "../../shared/helper/convertDate";
 import style from "./Overview.module.scss";
+import { WeatherIcon } from "../../icons/WeatherIcon";
 
 export const Overview: FC = () => {
-  const { weatherData, location } = useWeather((state) => ({
-    weatherData: state.weather,
+  const { current, location } = useSelectedWeather((state) => ({
+    current: state.current,
     location: state.location,
   }));
 
@@ -27,8 +27,8 @@ export const Overview: FC = () => {
                   {location}
                 </Typography>
 
-                <Button type="icon">
-                  <Chevron type="right" />
+                <Button type="icon" customClasses={style.actionChevron}>
+                  <Chevron />
                 </Button>
               </div>
 
@@ -41,29 +41,39 @@ export const Overview: FC = () => {
             </div>
 
             <div className={style.main}>
-              <Typography variant="h2" weight="medium">
-                {weatherData?.weather[0].main}
+              <Typography
+                variant="h2"
+                weight="medium"
+                className={style.mainTitle}
+              >
+                {current?.condition}
               </Typography>
 
               <div className={style.mainImage}>
-                <CloudSun />
+                <WeatherIcon
+                  condition={current?.condition}
+                  width="321px"
+                  height="254px"
+                />
               </div>
 
               <div className={style.mainDescription}>
                 <Typography variant="h1" weight="medium">
-                  {`${weatherData?.temp.day}°C`}
+                  {`${current?.temp}°C`}
                 </Typography>
                 <Typography variant="h4">
-                  {`${dateToWeekDay(weatherData?.dt)} | ${dateToDMY(
-                    weatherData?.dt
-                  )}`}
+                  {`${dateToWeekDay(current?.dt)} | ${dateToDMY(current?.dt)}`}
                 </Typography>
               </div>
             </div>
           </div>
         </div>
         <div className={style.overviewImage}>
-          <CloudSun />
+          <WeatherIcon
+            condition={current?.condition}
+            width="321px"
+            height="254px"
+          />
         </div>
       </div>
     </section>

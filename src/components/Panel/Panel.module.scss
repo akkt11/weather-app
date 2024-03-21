@@ -1,12 +1,13 @@
-@import "../../styles/index.scss";
+@import "../../styles/assets/mixins";
+@import "../../styles/assets/variables";
 
 .panel {
   padding: 40px 0 0 0;
-  height: 100%;
 
   &Container {
     display: flex;
     gap: 32px;
+    height: 100%;
   }
 
   &Slider {
@@ -14,27 +15,24 @@
   }
 
   &Menu {
-    background-color: $colorSecondary;
+    background-color: $colorTransparent;
     border-radius: 40px;
   }
 
   &Forecast {
     flex: 1 1 70%;
-    background-color: $colorSecondary;
+    background-color: $colorTransparent;
     border-radius: 40px;
   }
 
   &Condition {
     flex: 1 1 30%;
-    background-color: $colorSecondary;
+    background-color: $colorTransparent;
     border-radius: 40px;
-    padding: 35px 15px 35px 15px;
   }
 
   @include tablet {
-    &Container {
-      height: 100%;
-    }
+    height: 100%;
 
     &Forecast {
       border-radius: 10px;

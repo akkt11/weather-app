@@ -1,16 +1,11 @@
 import { FC } from "react";
 import { Typography } from "../../shared/ui/Typography/Typography";
-import { Clock } from "../../icons/Clock";
-import style from "./Forecast.module.scss";
-import { Line, LineChart } from "recharts";
+import { Clock } from "../../icons/ClockIcon";
 import { Button } from "../../shared/ui/Button/Button";
+import { ForecastChart } from "../../shared/ui/Chart/ForecastChart";
+import style from "./Forecast.module.scss";
 
 export const Forecast: FC = () => {
-  const data = Array.from({ length: 24 }).map((_, index) => ({
-    hour: index,
-    degree: Math.floor(Math.random() * 30),
-  }));
-
   return (
     <div className={style.forecast}>
       <div className={style.forecastTime}>
@@ -21,14 +16,7 @@ export const Forecast: FC = () => {
       </div>
 
       <div className={style.forecastChart}>
-        <LineChart
-          width={2400}
-          height={100}
-          data={data}
-          style={{ position: "absolute" }}
-        >
-          <Line type="monotone" dataKey="degree" stroke="#FFC355" />
-        </LineChart>
+        <ForecastChart />
       </div>
 
       <Button type="primary" customClasses={style.forecastButton}>

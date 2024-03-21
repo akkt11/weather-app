@@ -1,33 +1,33 @@
 import { FC, useEffect, useState } from "react";
 import { EffectCoverflow, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Sun } from "../../../icons/Sun";
-import { Typography } from "../../../shared/ui/Typography/Typography";
-import { WeatherItem, useGetWeather } from "../../../shared/api/hooks";
-import { dateToWeekDay } from "../../../shared/helper/convertDate";
-import { useWeather } from "../../../store";
+import { Typography } from "../Typography/Typography";
+import { useGetWeather } from "../../api/hooks";
+import { dateToDMY, dateToWeekDay } from "../../helper/convertDate";
+import { useSelectedWeather } from "../../../store";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/effect-coverflow";
 import { Swiper as SwiperInstance } from "swiper/types";
 import style from "./SliderCondition.module.scss";
+import { WeatherIcon } from "../../../icons/WeatherIcon";
 
 export const SliderCondition: FC = () => {
-  const { data: weatherData, isLoading } = useGetWeather("Bishkek");
-  const setWeather = useWeather((state) => state.setWeather);
+  const { weatherData, isLoading } = useGetWeather("Bishkek");
+  const updateWeather = useSelectedWeather((state) => state.setSelectedWeather);
 
-  const getDayWeather = (swiper: SwiperInstance) => {
+  const selectedWeather = (swiper: SwiperInstance) => {
     if (swiper.slides.length > 0) {
       const currentSlide = swiper.slides[swiper.activeIndex];
       const dt = currentSlide.getAttribute("data-dt");
 
-      if (dt) {
-        const getDayWeather = weatherData?.daily.find(
-          (item) => item.dt === parseInt(dt)
-        );
+      if (!dt) return;
 
-        setWeather(getDayWeather, weatherData?.location);
-      }
+      const getCurrentWeather = weatherData?.daily.find(
+        (item) => item.dt === parseInt(dt)
+      );
+
+      updateWeather(getCurrentWeather, weatherData?.location);
     }
   };
 
@@ -41,7 +41,7 @@ export const SliderCondition: FC = () => {
         <Typography variant="h4" className={style.sliderSlideContent}>
           {dateToWeekDay(item.dt)}
         </Typography>
-        <Sun />
+        <WeatherIcon condition={item.condition} />
       </SwiperSlide>
     );
   });
@@ -65,8 +65,8 @@ export const SliderCondition: FC = () => {
         slideShadows: false,
         depth: 250,
       }}
-      onAfterInit={(swiper) => getDayWeather(swiper)}
-      onSlideChange={(swiper) => getDayWeather(swiper)}
+      onAfterInit={(swiper) => selectedWeather(swiper)}
+      onSlideChange={(swiper) => selectedWeather(swiper)}
       breakpoints={{
         640: {
           coverflowEffect: {

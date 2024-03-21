@@ -1,5 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap");
-@import "./assets/classes";
 @import "./assets/mixins";
 @import "./assets/reset";
 @import "./assets/variables";
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: $baseFontFamily;
+  color: $colorWhite;
+  background: $colorPrimary;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+[class*="Container"] {
+  max-width: $desktopContainerWidth;
+  margin: 0 auto;
+  padding: 0 42px;
+}
+
+@include tablet {
+  [class*="Container"] {
+    padding: 0 24px;
+  }
+}
+
+@include mobile {
+  [class*="Container"] {
+    max-width: $mobileContainerWidth;
+  }
+}

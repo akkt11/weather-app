@@ -1,16 +1,15 @@
 import { FC } from "react";
 import { Typography } from "../../shared/ui/Typography/Typography";
-import { Feel } from "../../icons/Feel";
-import { Wind } from "../../icons/Wind";
-import { Drop } from "../../icons/Drop";
-import { Sun } from "../../icons/Sun";
-import { SliderCondition } from "./slider/SliderCondition";
+import { Feel } from "../../icons/FeelIcon";
+import { Wind } from "../../icons/WindIcon";
+import { Drop } from "../../icons/DropIcon";
+import { SliderCondition } from "../../shared/ui/Slider/SliderCondition";
 import style from "./Condition.module.scss";
-import { useWeather } from "../../store";
+import { useSelectedWeather } from "../../store";
 import { capitalize, uppercase } from "../../shared/helper/stringFormat";
 
 export const Condition: FC = () => {
-  const weather = useWeather((state) => state.weather);
+  const current = useSelectedWeather((state) => state.current);
 
   return (
     <div className={style.condition}>
@@ -38,7 +37,7 @@ export const Condition: FC = () => {
               {capitalize("real feel")}
             </Typography>
             <Typography variant="h5" weight="medium">
-              {weather?.feels_like.day}
+              {`${current?.feel}°`}
             </Typography>
           </div>
         </div>
@@ -51,7 +50,7 @@ export const Condition: FC = () => {
               {capitalize("wind")}
             </Typography>
             <Typography variant="h5" weight="medium">
-              {`${weather?.wind_speed} km/hr`}
+              {`${current?.wind_speed} km/hr`}
             </Typography>
           </div>
         </div>
@@ -64,20 +63,18 @@ export const Condition: FC = () => {
               {capitalize("chance of rain")}
             </Typography>
             <Typography variant="h5" weight="medium">
-              {`${weather?.rain} %`}
+              {`${current?.rain} %`}
             </Typography>
           </div>
         </div>
 
         <div className={style.airInfo}>
-          <Sun />
-
           <div className={style.airDescription}>
             <Typography variant="paragraph" weight="medium">
               {capitalize("UV index")}
             </Typography>
             <Typography variant="h5" weight="medium">
-              {weather?.uvi}
+              {current?.uvi}
             </Typography>
           </div>
         </div>
