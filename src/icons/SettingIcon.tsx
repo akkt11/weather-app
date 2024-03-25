@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-export const Setting: FC = () => {
+export const SettingIcon: FC = () => {
   return (
     <svg
       width="50"

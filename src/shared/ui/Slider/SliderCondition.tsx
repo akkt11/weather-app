@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { EffectCoverflow, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Typography } from "../Typography/Typography";
 import { useGetWeather } from "../../api/hooks";
-import { dateToDMY, dateToWeekDay } from "../../helper/convertDate";
-import { useSelectedWeather } from "../../../store";
+import { dateToDMY, dateToWeekDay } from "../../helpers/convertDate";
+import { useCity, useSelectedWeather } from "../../../store";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/effect-coverflow";
@@ -13,10 +13,20 @@ import style from "./SliderCondition.module.scss";
 import { WeatherIcon } from "../../../icons/WeatherIcon";
 
 export const SliderCondition: FC = () => {
-  const { weatherData, isLoading } = useGetWeather("Bishkek");
-  const updateWeather = useSelectedWeather((state) => state.setSelectedWeather);
+  const swiperRef = useRef<SwiperInstance>();
+  const setSelectedWeather = useSelectedWeather(
+    (state) => state.setSelectedWeather
+  );
+  const city = useCity((state) => state.city);
+  const { weatherData } = useGetWeather(city);
 
-  const selectedWeather = (swiper: SwiperInstance) => {
+  useEffect(() => {
+    if (swiperRef.current) {
+      selectWeather(swiperRef.current);
+    }
+  }, [weatherData]);
+
+  const selectWeather = (swiper: SwiperInstance) => {
     if (swiper.slides.length > 0) {
       const currentSlide = swiper.slides[swiper.activeIndex];
       const dt = currentSlide.getAttribute("data-dt");
@@ -27,7 +37,7 @@ export const SliderCondition: FC = () => {
         (item) => item.dt === parseInt(dt)
       );
 
-      updateWeather(getCurrentWeather, weatherData?.location);
+      setSelectedWeather(weatherData?.location, getCurrentWeather);
     }
   };
 
@@ -46,10 +56,6 @@ export const SliderCondition: FC = () => {
     );
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <Swiper
       modules={[Navigation, EffectCoverflow]}
@@ -65,8 +71,8 @@ export const SliderCondition: FC = () => {
         slideShadows: false,
         depth: 250,
       }}
-      onAfterInit={(swiper) => selectedWeather(swiper)}
-      onSlideChange={(swiper) => selectedWeather(swiper)}
+      onSlideChange={(swiper) => selectWeather(swiper)}
+      onSwiper={(swiper) => (swiperRef.current = swiper)}
       breakpoints={{
         640: {
           coverflowEffect: {

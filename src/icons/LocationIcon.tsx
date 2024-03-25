@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-export const Location: FC = () => {
+export const LocationIcon: FC = () => {
   return (
     <svg
       width="28"

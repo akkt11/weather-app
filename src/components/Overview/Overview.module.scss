@@ -1,4 +1,5 @@
 @import "../../styles/assets/mixins";
+@import "../../styles/assets/variables";
 
 .overview {
   padding: 30px 0 0 0;
@@ -8,24 +9,34 @@
     height: 100%;
   }
 
+  &Modal {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 5px);
+  }
+
   &Info {
     flex: 1 1 70%;
     padding: 0 0 0 60px;
 
     .infoWrapper {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 30px;
       height: 100%;
-      max-width: 230px;
     }
 
     .action {
       &City {
-        display: flex;
+        position: relative;
+        display: inline-flex;
         align-items: center;
         gap: 8px;
+      }
+
+      &Button {
+        gap: 6px;
       }
 
       &Image {
@@ -40,6 +51,11 @@
     }
 
     .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+
       &Title {
         padding-bottom: 100px;
       }
@@ -48,8 +64,9 @@
         display: none;
 
         svg {
-          width: 200px;
-          height: 200px;
+          width: 40%;
+          height: 100%;
+          max-width: 200px;
         }
       }
     }
@@ -57,8 +74,7 @@
 
   &Image {
     flex: 1 1 30%;
-    display: flex;
-    align-items: center;
+    @include flex;
     padding: 0 60px 0 0;
   }
 
@@ -66,13 +82,18 @@
     padding: 30px 0 0 0;
     height: 100%;
 
+    &Modal {
+      left: 0;
+      top: 35px;
+    }
+
     &Info {
       text-align: center;
       padding: 0;
     }
 
     .infoWrapper {
-      max-width: none;
+      width: 100%;
     }
 
     .action {

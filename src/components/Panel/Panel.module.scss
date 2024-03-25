@@ -15,18 +15,19 @@
   }
 
   &Menu {
+    flex: 0 1 90px;
     background-color: $colorTransparent;
     border-radius: 40px;
   }
 
   &Forecast {
-    flex: 1 1 70%;
+    flex: 1 1 58%;
     background-color: $colorTransparent;
     border-radius: 40px;
   }
 
   &Condition {
-    flex: 1 1 30%;
+    flex: 1 1 21%;
     background-color: $colorTransparent;
     border-radius: 40px;
   }

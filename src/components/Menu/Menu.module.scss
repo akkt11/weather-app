@@ -2,7 +2,7 @@
   text-align: center;
   padding: 20px;
 
-  &Buttons {
+  &List {
     img {
       border-radius: 100%;
       width: 50px;
@@ -19,5 +19,9 @@
         margin-bottom: 25px;
       }
     }
+  }
+
+  &Button {
+    flex-direction: column;
   }
 }

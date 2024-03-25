@@ -1,18 +1,21 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Typography } from "../../shared/ui/Typography/Typography";
-import { Location } from "../../icons/LocationIcon";
-import { Chevron } from "../../icons/ChevronIcon";
+import { LocationIcon } from "../../icons/LocationIcon";
+import { ChevronIcon } from "../../icons/ChevronIcon";
 import { Button } from "../../shared/ui/Button/Button";
 import { useSelectedWeather } from "../../store";
-import { dateToDMY, dateToWeekDay } from "../../shared/helper/convertDate";
-import style from "./Overview.module.scss";
+import { dateToDMY, dateToWeekDay } from "../../shared/helpers/convertDate";
 import { WeatherIcon } from "../../icons/WeatherIcon";
+import style from "./Overview.module.scss";
+import { ModalCity } from "../../shared/ui/Modal/ModalCity";
+import { useDetectClickOut } from "../../shared/helpers/useDetectClickOut";
 
 export const Overview: FC = () => {
   const { current, location } = useSelectedWeather((state) => ({
     current: state.current,
     location: state.location,
   }));
+  const { show, nodeRef, triggerRef } = useDetectClickOut(false);
 
   return (
     <section className={style.overview}>
@@ -21,14 +24,18 @@ export const Overview: FC = () => {
           <div className={style.infoWrapper}>
             <div className={style.action}>
               <div className={style.actionCity}>
-                <Location />
+                <div className={style.overviewModal}>
+                  {show ? <ModalCity ref={nodeRef} /> : null}
+                </div>
 
-                <Typography variant="h3" weight="medium">
-                  {location}
-                </Typography>
+                <LocationIcon />
 
-                <Button type="icon" customClasses={style.actionChevron}>
-                  <Chevron />
+                <Button ref={triggerRef} className={style.actionButton}>
+                  <Typography variant="link" weight="medium">
+                    {location}
+                  </Typography>
+
+                  <ChevronIcon />
                 </Button>
               </div>
 
@@ -58,9 +65,10 @@ export const Overview: FC = () => {
               </div>
 
               <div className={style.mainDescription}>
-                <Typography variant="h1" weight="medium">
-                  {`${current?.temp}°C`}
+                <Typography variant="h1" weight="medium" symbol="c">
+                  {current?.temp}
                 </Typography>
+
                 <Typography variant="h4">
                   {`${dateToWeekDay(current?.dt)} | ${dateToDMY(current?.dt)}`}
                 </Typography>

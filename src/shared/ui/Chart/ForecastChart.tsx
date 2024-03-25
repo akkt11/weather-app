@@ -1,13 +1,15 @@
 import { LabelList, Line, LineChart } from "recharts";
 import { Typography } from "../Typography/Typography";
 import style from "./ForecastChart.module.scss";
-import { dateToHour, dateToNow } from "../../helper/convertDate";
+import { dateToHour, dateToNow } from "../../helpers/convertDate";
 import { WeatherIcon } from "../../../icons/WeatherIcon";
 import { WeatherHourly, useGetWeather } from "../../api/hooks";
 import clsx from "clsx";
+import { useCity } from "../../../store";
 
 export const ForecastChart = () => {
-  const { weatherData } = useGetWeather("Bishkek");
+  const city = useCity((state) => state.city);
+  const { weatherData } = useGetWeather(city);
 
   const customizedLabel = (props: any) => {
     const { x, y, index } = props;
@@ -26,7 +28,9 @@ export const ForecastChart = () => {
         <div
           className={clsx(style.degree, isCurrentHour ? style.currentHour : "")}
         >
-          <Typography variant="h6">{`${temp}°`}</Typography>
+          <Typography variant="h6" symbol="temp">
+            {temp}
+          </Typography>
 
           <div className={style.degreeDetails}>
             <WeatherIcon condition={condition} />

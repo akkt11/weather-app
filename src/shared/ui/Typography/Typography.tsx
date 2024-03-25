@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC, createElement } from "react";
+import { FC, ReactNode, createElement } from "react";
 import { ITags, TypographyProps } from "./types/Typography.types";
 import style from "./Typography.module.scss";
 
@@ -10,6 +10,8 @@ export const Typography: FC<TypographyProps> = (props) => {
     className,
     color = "",
     children,
+    format,
+    symbol,
   } = props;
 
   const Tags = {
@@ -21,6 +23,7 @@ export const Typography: FC<TypographyProps> = (props) => {
     h6: "h6",
     paragraph: "p",
     caption: "p",
+    link: "a",
   };
 
   const classNameGenerated = clsx(
@@ -30,9 +33,40 @@ export const Typography: FC<TypographyProps> = (props) => {
     className
   );
 
+  const formatString = (word: ReactNode) => {
+    if (typeof word !== "string") return "";
+
+    if (format === "capitalize") {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+    if (format === "uppercase") {
+      return word.toUpperCase();
+    }
+  };
+
+  const showSymbol = (type?: string) => {
+    if (type === "c") {
+      return "°C";
+    }
+    if (type === "f") {
+      return "°F";
+    }
+    if (type === "km") {
+      return "km/h";
+    }
+    if (type === "temp") {
+      return "°";
+    }
+    if (type === "pct") {
+      return "%";
+    }
+    return "";
+  };
+
   return createElement(
     Tags[variant as keyof ITags],
     { className: classNameGenerated },
-    children
+    format ? formatString(children) : children,
+    symbol ? showSymbol(symbol) : null
   );
 };

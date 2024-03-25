@@ -8,6 +8,7 @@
   font-size: 48px;
 }
 
+.link,
 .h3 {
   font-size: 24px;
 }
@@ -30,6 +31,12 @@
 
 .caption {
   font-size: 10px;
+}
+
+.link {
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 // Weight
@@ -79,6 +86,7 @@
     font-size: 24px;
   }
 
+  .link,
   .h3 {
     font-size: 20px;
   }
@@ -89,6 +97,7 @@
 }
 
 @include mobile {
+  .link,
   .h3 {
     font-size: 18px;
   }

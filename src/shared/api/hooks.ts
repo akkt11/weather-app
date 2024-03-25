@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { axiosApi } from "./axiosApi";
 
 export interface WeatherResponse {
@@ -124,56 +124,82 @@ export interface WeatherData {
 }
 
 export const useGetGeocode = (city_name: string) => {
-  const { data, isLoading } = useQuery({
-    queryKey: ["geocode"],
+  const { data, error } = useQuery({
+    queryKey: ["geocode", city_name],
     queryFn: async () => {
-      const response = await axiosApi(
-        `/geo/1.0/direct?q=${city_name}&appid=a87ba81565b17502bff3d61c4325fcd8`
-      );
+      try {
+        const response = await axiosApi.get("/geo/1.0/direct", {
+          params: {
+            q: city_name,
+            appid: "a87ba81565b17502bff3d61c4325fcd8",
+          },
+        });
 
-      return response.data[0];
+        return response.data[0] ?? null;
+      } catch (error) {
+        throw new Error("Failed to fetch geocode data");
+      }
     },
+    placeholderData: keepPreviousData,
   });
 
-  return { data, isLoading };
+  return { data, error };
 };
 
 export const useGetWeather = (city_name: string) => {
-  const { data: geocodeData } = useGetGeocode(city_name);
+  const { data: geocodeData, error: goecodeError } = useGetGeocode(city_name);
 
   const latitude = geocodeData?.lat;
   const longitude = geocodeData?.lon;
 
-  const { data: weatherData, isLoading } = useQuery<WeatherData>({
+  const {
+    data: weatherData,
+    status,
+    error: weatherError,
+  } = useQuery<WeatherData>({
     queryKey: ["weather", latitude, longitude],
     queryFn: async () => {
-      const { data } = await axiosApi<WeatherResponse>(
-        `/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&appid=a87ba81565b17502bff3d61c4325fcd8`
-      );
+      try {
+        const { data } = await axiosApi.get<WeatherResponse>(
+          "/data/3.0/onecall",
+          {
+            params: {
+              lat: latitude,
+              lon: longitude,
+              exclude: "minutely",
+              units: "metric",
+              appid: "a87ba81565b17502bff3d61c4325fcd8",
+            },
+          }
+        );
 
-      const weather = {
-        location: data.timezone,
-        daily: data.daily.map((item) => ({
-          dt: item.dt,
-          temp: Math.floor(item.temp.day),
-          feel: Math.floor(item.feels_like.day),
-          wind_speed: item.wind_speed,
-          condition: item.weather[0].main,
-          rain: item.rain,
-          uvi: item.uvi,
-        })),
-        hourly: data.hourly.slice(0, 24).map((item) => ({
-          dt: item.dt,
-          temp: Math.floor(item.temp),
-          wind_speed: item.wind_speed,
-          condition: item.weather[0].main,
-        })),
-      };
+        const weather = {
+          location: data.timezone,
+          daily: data.daily.map((item) => ({
+            dt: item.dt,
+            temp: Math.floor(item.temp.day) ?? 0,
+            feel: Math.floor(item.feels_like.day) ?? 0,
+            wind_speed: item.wind_speed ?? 0,
+            condition: item.weather[0].main,
+            rain: item.rain ?? 0,
+            uvi: item.uvi ?? 0,
+          })),
+          hourly: data.hourly.slice(0, 24).map((item) => ({
+            dt: item.dt,
+            temp: Math.floor(item.temp) ?? 0,
+            wind_speed: item.wind_speed ?? 0,
+            condition: item.weather[0].main ?? 0,
+          })),
+        };
 
-      return weather;
+        return weather ?? null;
+      } catch (error) {
+        throw new Error("Failed to fetch weather data");
+      }
     },
     enabled: !!latitude && !!longitude,
+    placeholderData: keepPreviousData,
   });
 
-  return { weatherData, isLoading };
+  return { geocodeData, weatherData, status, weatherError, goecodeError };
 };

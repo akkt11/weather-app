@@ -1,0 +1,75 @@
+@import "../../../styles/assets/mixins";
+
+.modal {
+  width: 280px;
+  background: #363636;
+  border-radius: 16px;
+  padding: 16px 0;
+
+  &Search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 16px;
+    background: #4a4a4a;
+    border-radius: 16px;
+
+    &:hover {
+      background: #616060;
+    }
+
+    &.active {
+      background: #616060;
+    }
+
+    input {
+      background: none;
+      border-radius: 16px;
+      padding: 2px 10px;
+      width: 100%;
+      color: #fff;
+      outline: none;
+    }
+
+    button {
+      margin-right: 10px;
+    }
+  }
+
+  &Error {
+    position: absolute;
+    padding: 2px 16px;
+    width: 100%;
+    color: #f34848;
+  }
+
+  &List {
+    padding-top: 28px;
+    max-height: 235px;
+    overflow: auto;
+  }
+
+  &Item {
+    padding: 6px 16px;
+    cursor: pointer;
+
+    &:hover {
+      background: #ffffff12;
+    }
+  }
+
+  &Title {
+    padding: 0 16px;
+    color: #717171;
+  }
+
+  &Text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  @include tablet {
+    width: 230px;
+  }
+}

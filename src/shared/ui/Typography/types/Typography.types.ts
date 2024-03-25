@@ -9,6 +9,7 @@ export interface ITags {
   h6: string;
   paragraph: string;
   caption: string;
+  link: string;
 }
 
 export type TypographyVariants =
@@ -19,11 +20,16 @@ export type TypographyVariants =
   | "h5"
   | "h6"
   | "paragraph"
-  | "caption";
+  | "caption"
+  | "link";
 
 export type ColorVariants = "black" | "white" | "orange";
 
 export type WeightVariants = "regular" | "medium" | "semibold" | "bold";
+
+export type FormatVariants = "capitalize" | "uppercase";
+
+export type SymbolVariants = "c" | "f" | "km" | "temp" | "pct";
 
 export interface TypographyProps {
   variant: TypographyVariants;
@@ -31,4 +37,6 @@ export interface TypographyProps {
   className?: string;
   color?: ColorVariants;
   children: ReactNode;
+  format?: FormatVariants;
+  symbol?: SymbolVariants;
 }
