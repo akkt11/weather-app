@@ -1,9 +1,9 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef } from "react";
 import { EffectCoverflow, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Typography } from "../Typography/Typography";
 import { useGetWeather } from "../../api/hooks";
-import { dateToDMY, dateToWeekDay } from "../../helpers/convertDate";
+import { dateToWeekDay } from "../../helpers/convertDate";
 import { useLocation, useSelectedWeather } from "../../../store/store";
 import "swiper/scss";
 import "swiper/scss/navigation";

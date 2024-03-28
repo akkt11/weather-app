@@ -33,7 +33,7 @@ export const useFavoriteLocation = create<FavoriteLocationState>()(
     },
     addFavorite: (geocodeData, weatherData) => {
       if (geocodeData && weatherData) {
-        let newFavorite = [];
+        const newFavorite = [];
 
         newFavorite.push(...get().localFavoriteData, {
           main: weatherData.fullLocation[0],

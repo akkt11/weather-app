@@ -1,9 +1,9 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Overview } from "../Overview/Overview";
 import { Panel } from "../Panel/Panel";
 import { useGetWeather } from "../../shared/api/hooks";
 import { Loader } from "../../shared/ui/Loader/Loader";
-import { useLocation, useSelectedWeather } from "../../store/store";
+import { useLocation } from "../../store/store";
 
 export const Home: FC = () => {
   const location = useLocation((state) => state.location);
