@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosApi = axios.create({
-  baseURL: "https://api.openweathermap.org",
+  baseURL: process.env.VITE_API_URL,
 });
 
 axiosApi.interceptors.request.use(

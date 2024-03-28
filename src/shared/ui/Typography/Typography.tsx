@@ -12,6 +12,7 @@ export const Typography: FC<TypographyProps> = (props) => {
     children,
     format,
     symbol,
+    ellipsis,
   } = props;
 
   const Tags = {
@@ -30,6 +31,7 @@ export const Typography: FC<TypographyProps> = (props) => {
     style[variant],
     style[weight],
     style[color],
+    { [style.ellipsis]: ellipsis },
     className
   );
 

@@ -43,30 +43,51 @@
     color: #f34848;
   }
 
-  &List {
+  &Favorite {
     padding-top: 28px;
+  }
+
+  &List {
+    padding-top: 4px;
     max-height: 235px;
     overflow: auto;
   }
 
+  &Action {
+    padding: 6px 16px;
+    cursor: pointer;
+    background: #ffd02c;
+    color: #795700;
+    display: none;
+
+    &:hover {
+      background: #f1c40e;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
   &Item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 6px 16px;
     cursor: pointer;
 
-    &:hover {
+    &.active {
       background: #ffffff12;
+    }
+
+    &:hover {
+      background: #ffffff2b;
     }
   }
 
   &Title {
     padding: 0 16px;
     color: #717171;
-  }
-
-  &Text {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
   }
 
   @include tablet {

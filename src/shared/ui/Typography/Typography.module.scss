@@ -36,7 +36,15 @@
 .link {
   &:hover {
     text-decoration: underline;
+    text-underline-position: under;
   }
+}
+
+// Ellipsis
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 // Weight

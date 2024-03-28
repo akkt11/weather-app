@@ -39,4 +39,5 @@ export interface TypographyProps {
   children: ReactNode;
   format?: FormatVariants;
   symbol?: SymbolVariants;
+  ellipsis?: boolean;
 }

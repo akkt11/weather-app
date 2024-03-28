@@ -1,15 +1,15 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Overview } from "../Overview/Overview";
 import { Panel } from "../Panel/Panel";
 import { useGetWeather } from "../../shared/api/hooks";
 import { Loader } from "../../shared/ui/Loader/Loader";
-import { useCity, useSelectedWeather } from "../../store";
+import { useLocation, useSelectedWeather } from "../../store";
 
 export const Home: FC = () => {
-  const city = useCity((state) => state.city);
-  const { status } = useGetWeather(city);
+  const location = useLocation((state) => state.location);
+  const { isPending, isError } = useGetWeather(location);
 
-  if (status === "pending") {
+  if (isPending || isError) {
     return <Loader />;
   }
 

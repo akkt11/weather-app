@@ -5,11 +5,11 @@ import { dateToHour, dateToNow } from "../../helpers/convertDate";
 import { WeatherIcon } from "../../../icons/WeatherIcon";
 import { WeatherHourly, useGetWeather } from "../../api/hooks";
 import clsx from "clsx";
-import { useCity } from "../../../store";
+import { useLocation } from "../../../store";
 
 export const ForecastChart = () => {
-  const city = useCity((state) => state.city);
-  const { weatherData } = useGetWeather(city);
+  const location = useLocation((state) => state.location);
+  const { weatherData } = useGetWeather(location);
 
   const customizedLabel = (props: any) => {
     const { x, y, index } = props;
@@ -26,7 +26,7 @@ export const ForecastChart = () => {
         className={style.labelWrapper}
       >
         <div
-          className={clsx(style.degree, isCurrentHour ? style.currentHour : "")}
+          className={clsx(style.degree, { [style.currentHour]: isCurrentHour })}
         >
           <Typography variant="h6" symbol="temp">
             {temp}

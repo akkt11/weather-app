@@ -9,12 +9,6 @@
     height: 100%;
   }
 
-  &Modal {
-    position: absolute;
-    top: 0;
-    left: calc(100% + 5px);
-  }
-
   &Info {
     flex: 1 1 70%;
     padding: 0 0 0 60px;
@@ -28,6 +22,12 @@
     }
 
     .action {
+      &Modal {
+        position: absolute;
+        top: 0;
+        left: calc(100% + 5px);
+      }
+
       &City {
         position: relative;
         display: inline-flex;
@@ -82,13 +82,7 @@
     padding: 30px 0 0 0;
     height: 100%;
 
-    &Modal {
-      left: 0;
-      top: 35px;
-    }
-
     &Info {
-      text-align: center;
       padding: 0;
     }
 
@@ -99,6 +93,17 @@
     .action {
       display: flex;
       justify-content: space-between;
+
+      &Modal {
+        left: 0;
+        top: 35px;
+      }
+
+      &Button {
+        a {
+          max-width: 300px;
+        }
+      }
 
       &Image {
         display: block;
@@ -112,6 +117,8 @@
     }
 
     .main {
+      text-align: center;
+
       &Title {
         padding: 0;
       }
@@ -123,6 +130,16 @@
 
     &Image {
       display: none;
+    }
+  }
+}
+
+@include custom(500px) {
+  .action {
+    &Button {
+      a {
+        max-width: 150px !important;
+      }
     }
   }
 }

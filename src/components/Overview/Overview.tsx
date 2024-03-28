@@ -3,18 +3,19 @@ import { Typography } from "../../shared/ui/Typography/Typography";
 import { LocationIcon } from "../../icons/LocationIcon";
 import { ChevronIcon } from "../../icons/ChevronIcon";
 import { Button } from "../../shared/ui/Button/Button";
-import { useSelectedWeather } from "../../store";
+import { useLocation, useSelectedWeather } from "../../store";
 import { dateToDMY, dateToWeekDay } from "../../shared/helpers/convertDate";
 import { WeatherIcon } from "../../icons/WeatherIcon";
 import style from "./Overview.module.scss";
-import { ModalCity } from "../../shared/ui/Modal/ModalCity";
+import { ModalLocation } from "../../shared/ui/Modal/ModalLocation";
 import { useDetectClickOut } from "../../shared/helpers/useDetectClickOut";
+import { useGetWeather } from "../../shared/api/hooks";
+import clsx from "clsx";
 
 export const Overview: FC = () => {
-  const { current, location } = useSelectedWeather((state) => ({
-    current: state.current,
-    location: state.location,
-  }));
+  const selectedWeather = useSelectedWeather((state) => state.selectedWeather);
+  const location = useLocation((state) => state.location);
+  const { weatherData } = useGetWeather(location);
   const { show, nodeRef, triggerRef } = useDetectClickOut(false);
 
   return (
@@ -24,15 +25,17 @@ export const Overview: FC = () => {
           <div className={style.infoWrapper}>
             <div className={style.action}>
               <div className={style.actionCity}>
-                <div className={style.overviewModal}>
-                  {show ? <ModalCity ref={nodeRef} /> : null}
+                <div className={style.actionModal}>
+                  {show ? <ModalLocation ref={nodeRef} /> : null}
                 </div>
 
                 <LocationIcon />
 
                 <Button ref={triggerRef} className={style.actionButton}>
-                  <Typography variant="link" weight="medium">
-                    {location}
+                  <Typography variant="link" weight="medium" ellipsis={true}>
+                    {weatherData?.fullLocation
+                      .filter((item) => item)
+                      .join(", ")}
                   </Typography>
 
                   <ChevronIcon />
@@ -53,24 +56,24 @@ export const Overview: FC = () => {
                 weight="medium"
                 className={style.mainTitle}
               >
-                {current?.condition}
+                {selectedWeather?.condition}
               </Typography>
 
               <div className={style.mainImage}>
                 <WeatherIcon
-                  condition={current?.condition}
+                  condition={selectedWeather?.condition}
                   width="321px"
                   height="254px"
                 />
               </div>
 
-              <div className={style.mainDescription}>
-                <Typography variant="h1" weight="medium" symbol="c">
-                  {current?.temp}
-                </Typography>
+              <Typography variant="h1" weight="medium" symbol="c">
+                {selectedWeather?.temp}
+              </Typography>
 
-                <Typography variant="h4">
-                  {`${dateToWeekDay(current?.dt)} | ${dateToDMY(current?.dt)}`}
+              <div className={style.mainDate}>
+                <Typography variant="h4" className={style.dateText}>
+                  {selectedWeather?.fullDate.filter((item) => item).join(" | ")}
                 </Typography>
               </div>
             </div>
@@ -78,7 +81,7 @@ export const Overview: FC = () => {
         </div>
         <div className={style.overviewImage}>
           <WeatherIcon
-            condition={current?.condition}
+            condition={selectedWeather?.condition}
             width="321px"
             height="254px"
           />

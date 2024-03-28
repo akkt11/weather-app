@@ -6,7 +6,7 @@ import { ConditionIcon } from "../../icons/ConditionIcon";
 import style from "./Condition.module.scss";
 
 export const Condition: FC = () => {
-  const current = useSelectedWeather((state) => state.current);
+  const selectedWeather = useSelectedWeather((state) => state.selectedWeather);
 
   return (
     <div className={style.condition}>
@@ -35,7 +35,7 @@ export const Condition: FC = () => {
             </Typography>
 
             <Typography variant="h5" weight="medium" symbol="temp">
-              {current?.feel}
+              {selectedWeather?.feel}
             </Typography>
           </div>
         </div>
@@ -49,7 +49,7 @@ export const Condition: FC = () => {
             </Typography>
 
             <Typography variant="h5" weight="medium" symbol="km">
-              {current?.wind_speed}
+              {selectedWeather?.wind_speed}
             </Typography>
           </div>
         </div>
@@ -63,7 +63,7 @@ export const Condition: FC = () => {
             </Typography>
 
             <Typography variant="h5" weight="medium" symbol="pct">
-              {current?.rain}
+              {selectedWeather?.rain}
             </Typography>
           </div>
         </div>
@@ -76,7 +76,7 @@ export const Condition: FC = () => {
               UV index
             </Typography>
             <Typography variant="h5" weight="medium">
-              {current?.uvi}
+              {selectedWeather?.uvi}
             </Typography>
           </div>
         </div>

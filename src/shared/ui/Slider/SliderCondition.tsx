@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Typography } from "../Typography/Typography";
 import { useGetWeather } from "../../api/hooks";
 import { dateToDMY, dateToWeekDay } from "../../helpers/convertDate";
-import { useCity, useSelectedWeather } from "../../../store";
+import { useLocation, useSelectedWeather } from "../../../store";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/effect-coverflow";
@@ -17,8 +17,8 @@ export const SliderCondition: FC = () => {
   const setSelectedWeather = useSelectedWeather(
     (state) => state.setSelectedWeather
   );
-  const city = useCity((state) => state.city);
-  const { weatherData } = useGetWeather(city);
+  const location = useLocation((state) => state.location);
+  const { weatherData } = useGetWeather(location);
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -37,7 +37,7 @@ export const SliderCondition: FC = () => {
         (item) => item.dt === parseInt(dt)
       );
 
-      setSelectedWeather(weatherData?.location, getCurrentWeather);
+      setSelectedWeather(getCurrentWeather);
     }
   };
 
