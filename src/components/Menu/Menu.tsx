@@ -9,7 +9,7 @@ export const Menu: FC = () => {
     <div className={style.menu}>
       <div>
         <img
-          src="https://cdnn11.img.sputnik.by/img/104429/09/1044290984_433:0:2481:2048_1920x0_80_0_0_d1ec1f648af8425ae6f73734c93b85e2.jpg"
+          src="https://i.pinimg.com/736x/c0/74/9b/c0749b7cc401421662ae901ec8f9f660.jpg"
           alt="Ava"
         />
       </div>
