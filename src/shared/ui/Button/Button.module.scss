@@ -3,7 +3,7 @@
 
 .button {
   @include flex;
-  color: #fff;
+  color: $colorWhite;
   cursor: pointer;
 
   &[data-full-width="true"] {
@@ -11,27 +11,7 @@
   }
 
   &.primary {
-    background: #ffaa0f;
+    background: $colorSecondary;
     color: $colorBlack;
   }
-
-  // &:hover {
-  //   color: $colorWhite;
-  // }
-
-  // &:active {
-  //   transition: none;
-  //   background-color: $colorGray450;
-  // }
-
-  // &:disabled {
-  //   color: $colorGray300;
-  //   background-color: $colorGray550;
-  //   cursor: auto;
-  // }
-
-  // &:disabled &:hover {
-  //   color: $colorGray300;
-  //   background-color: $colorGray500;
-  // }
 }

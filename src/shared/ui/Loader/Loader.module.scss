@@ -1,3 +1,5 @@
+@import "../../../styles/assets/variables";
+
 .loaderWrapper {
   display: flex;
   align-items: center;
@@ -10,23 +12,23 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #fff;
-  box-shadow: 32px 0 #fff, -32px 0 #fff;
+  background-color: $colorWhite;
+  box-shadow: 32px 0 $colorWhite, -32px 0 $colorWhite;
   position: relative;
   animation: flash 0.5s ease-out infinite alternate;
 }
 
 @keyframes flash {
   0% {
-    background-color: #fff2;
-    box-shadow: 32px 0 #fff2, -32px 0 #fff;
+    background-color: $colorGray100;
+    box-shadow: 32px 0 $colorGray100, -32px 0 $colorWhite;
   }
   50% {
-    background-color: #fff;
-    box-shadow: 32px 0 #fff2, -32px 0 #fff2;
+    background-color: $colorWhite;
+    box-shadow: 32px 0 $colorGray100, -32px 0 $colorGray100;
   }
   100% {
-    background-color: #fff2;
-    box-shadow: 32px 0 #fff, -32px 0 #fff2;
+    background-color: $colorGray100;
+    box-shadow: 32px 0 $colorWhite, -32px 0 $colorGray100;
   }
 }

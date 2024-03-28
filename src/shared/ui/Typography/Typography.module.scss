@@ -73,16 +73,8 @@
   color: $colorWhite;
 }
 
-.grey {
-  color: $colorGrey;
-}
-
-.primary {
-  color: $colorPrimary;
-}
-
-.secondary {
-  color: $colorSecondary;
+.gray {
+  color: $colorGray500;
 }
 
 @include tablet {

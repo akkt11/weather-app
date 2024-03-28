@@ -1,4 +1,5 @@
 @import "../../styles/assets/mixins";
+@import "../../styles/assets/variables";
 
 .forecast {
   display: flex;
@@ -19,6 +20,8 @@
     align-items: center;
     overflow-y: auto;
     height: 100%;
+
+    @include scroll;
   }
 
   &Button {
