@@ -1,3 +1,5 @@
+@import "../../styles/assets/mixins";
+
 .condition {
   position: relative;
   padding: 35px 15px 35px 15px;
@@ -21,16 +23,27 @@
     }
 
     &Time {
+      @include flex;
       padding-top: 60px;
+      gap: 4px;
     }
   }
 
   .air {
     position: relative;
 
-    &Info {
+    &Title {
+      margin-bottom: 20px;
+    }
+
+    &Element {
       display: flex;
-      margin-top: 20px;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    &Info {
+      display: inline-flex;
       gap: 8px;
     }
 

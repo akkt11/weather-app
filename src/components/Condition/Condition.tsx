@@ -5,10 +5,10 @@ import { useSelectedWeather } from "../../store/store";
 import { ConditionIcon } from "../../icons/ConditionIcon";
 import style from "./Condition.module.scss";
 import { MountainIcon } from "../../icons/MountainIcon";
+import { ClockIcon } from "../../icons/ClockIcon";
 
 export const Condition: FC = () => {
   const selectedWeather = useSelectedWeather((state) => state.selectedWeather);
-
   return (
     <div className={style.condition}>
       <div className={style.conditionImage}>
@@ -18,70 +18,91 @@ export const Condition: FC = () => {
         <div className={style.daySlider}>
           <SliderCondition />
         </div>
-        <div className={style.dayTime}>
-          <Typography variant="h5" weight="medium">
-            8:00PM GMT
-          </Typography>
-        </div>
+        <Typography variant="h5" weight="medium" className={style.dayTime}>
+          <ClockIcon />
+          {new Date().toLocaleTimeString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+          })}
+        </Typography>
       </div>
 
       <div className={style.air}>
-        <Typography variant="h6" weight="bold" format="uppercase">
+        <Typography
+          variant="h6"
+          weight="bold"
+          format="uppercase"
+          className={style.airTitle}
+        >
           air conditions
         </Typography>
 
-        <div className={style.airInfo}>
-          <ConditionIcon type="feel" />
+        <div className={style.airElement}>
+          <div className={style.airInfo}>
+            <ConditionIcon type="feel" />
 
-          <div className={style.airDescription}>
-            <Typography variant="paragraph" weight="medium" format="capitalize">
-              real feel
-            </Typography>
+            <div className={style.airDescription}>
+              <Typography
+                variant="paragraph"
+                weight="medium"
+                format="capitalize"
+              >
+                real feel
+              </Typography>
 
-            <Typography variant="h5" weight="medium" symbol="temp">
-              {selectedWeather?.feel}
-            </Typography>
+              <Typography variant="h5" weight="medium" symbol="temp">
+                {selectedWeather?.feel}
+              </Typography>
+            </div>
           </div>
-        </div>
 
-        <div className={style.airInfo}>
-          <ConditionIcon type="wind" />
+          <div className={style.airInfo}>
+            <ConditionIcon type="wind" />
 
-          <div className={style.airDescription}>
-            <Typography variant="paragraph" weight="medium" format="capitalize">
-              wind
-            </Typography>
+            <div className={style.airDescription}>
+              <Typography
+                variant="paragraph"
+                weight="medium"
+                format="capitalize"
+              >
+                wind
+              </Typography>
 
-            <Typography variant="h5" weight="medium" symbol="km">
-              {selectedWeather?.wind_speed}
-            </Typography>
+              <Typography variant="h5" weight="medium" symbol="km">
+                {selectedWeather?.wind_speed}
+              </Typography>
+            </div>
           </div>
-        </div>
 
-        <div className={style.airInfo}>
-          <ConditionIcon type="drop" />
+          <div className={style.airInfo}>
+            <ConditionIcon type="drop" />
 
-          <div className={style.airDescription}>
-            <Typography variant="paragraph" weight="medium" format="capitalize">
-              chance of rain
-            </Typography>
+            <div className={style.airDescription}>
+              <Typography
+                variant="paragraph"
+                weight="medium"
+                format="capitalize"
+              >
+                chance of rain
+              </Typography>
 
-            <Typography variant="h5" weight="medium" symbol="pct">
-              {selectedWeather?.rain}
-            </Typography>
+              <Typography variant="h5" weight="medium" symbol="pct">
+                {selectedWeather?.rain}
+              </Typography>
+            </div>
           </div>
-        </div>
 
-        <div className={style.airInfo}>
-          <ConditionIcon type="uv" />
+          <div className={style.airInfo}>
+            <ConditionIcon type="uv" />
 
-          <div className={style.airDescription}>
-            <Typography variant="paragraph" weight="medium">
-              UV index
-            </Typography>
-            <Typography variant="h5" weight="medium">
-              {selectedWeather?.uvi}
-            </Typography>
+            <div className={style.airDescription}>
+              <Typography variant="paragraph" weight="medium">
+                UV index
+              </Typography>
+              <Typography variant="h5" weight="medium">
+                {selectedWeather?.uvi}
+              </Typography>
+            </div>
           </div>
         </div>
       </div>

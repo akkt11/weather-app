@@ -28,7 +28,7 @@
         left: calc(100% + 5px);
       }
 
-      &City {
+      &Location {
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -36,7 +36,7 @@
       }
 
       &Button {
-        gap: 6px;
+        gap: 4px;
       }
 
       &Image {
@@ -102,6 +102,12 @@
       &Button {
         a {
           max-width: 300px;
+        }
+
+        svg {
+          transform: rotateZ(90deg);
+          width: 28px;
+          height: 28px;
         }
       }
 

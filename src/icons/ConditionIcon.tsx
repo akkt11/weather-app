@@ -71,6 +71,5 @@ export const ConditionIcon: FC<{ type: string }> = ({ type }) => {
           ></path>
         </svg>
       );
-    default:
   }
 };

@@ -133,7 +133,5 @@ export const WeatherIcon: FC<WeatherIconProps> = ({
           </defs>
         </svg>
       );
-    default:
-      "none";
   }
 };

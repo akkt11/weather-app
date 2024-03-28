@@ -1,16 +1,14 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Typography } from "../../shared/ui/Typography/Typography";
-import { LocationIcon } from "../../icons/LocationIcon";
 import { ChevronIcon } from "../../icons/ChevronIcon";
 import { Button } from "../../shared/ui/Button/Button";
 import { useLocation, useSelectedWeather } from "../../store/store";
-import { dateToDMY, dateToWeekDay } from "../../shared/helpers/convertDate";
 import { WeatherIcon } from "../../icons/WeatherIcon";
 import style from "./Overview.module.scss";
 import { ModalLocation } from "../../shared/ui/Modal/ModalLocation";
 import { useDetectClickOut } from "../../shared/helpers/useDetectClickOut";
 import { useGetWeather } from "../../shared/api/hooks";
-import clsx from "clsx";
+import { MenuIcon } from "../../icons/MenuIcon";
 
 export const Overview: FC = () => {
   const selectedWeather = useSelectedWeather((state) => state.selectedWeather);
@@ -24,12 +22,12 @@ export const Overview: FC = () => {
         <div className={style.overviewInfo}>
           <div className={style.infoWrapper}>
             <div className={style.action}>
-              <div className={style.actionCity}>
+              <div className={style.actionLocation}>
                 <div className={style.actionModal}>
                   {show ? <ModalLocation ref={nodeRef} /> : null}
                 </div>
 
-                <LocationIcon />
+                <MenuIcon type="location" />
 
                 <Button ref={triggerRef} className={style.actionButton}>
                   <Typography variant="link" weight="medium" ellipsis={true}>

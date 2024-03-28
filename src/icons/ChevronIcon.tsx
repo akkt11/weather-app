@@ -3,19 +3,19 @@ import { FC } from "react";
 export const ChevronIcon: FC = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width="21"
+      height="36"
+      viewBox="0 0 14 38"
       fill="none"
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        stroke="#fff"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M6 9l6 6 6-6"
-      ></path>
+        d="M4 28L13 18.5L4 9"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </svg>
   );
 };
