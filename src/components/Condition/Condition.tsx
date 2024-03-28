@@ -1,15 +1,19 @@
 import { FC } from "react";
 import { Typography } from "../../shared/ui/Typography/Typography";
 import { SliderCondition } from "../../shared/ui/Slider/SliderCondition";
-import { useSelectedWeather } from "../../store";
+import { useSelectedWeather } from "../../store/store";
 import { ConditionIcon } from "../../icons/ConditionIcon";
 import style from "./Condition.module.scss";
+import { MountainIcon } from "../../icons/MountainIcon";
 
 export const Condition: FC = () => {
   const selectedWeather = useSelectedWeather((state) => state.selectedWeather);
 
   return (
     <div className={style.condition}>
+      <div className={style.conditionImage}>
+        <MountainIcon />
+      </div>
       <div className={style.day}>
         <div className={style.daySlider}>
           <SliderCondition />

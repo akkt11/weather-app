@@ -1,6 +1,13 @@
 .condition {
   position: relative;
   padding: 35px 15px 35px 15px;
+  overflow: hidden;
+
+  &Image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 
   .day {
     margin-bottom: 35px;
@@ -19,6 +26,8 @@
   }
 
   .air {
+    position: relative;
+
     &Info {
       display: flex;
       margin-top: 20px;

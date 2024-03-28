@@ -3,9 +3,9 @@ import { Typography } from "../Typography/Typography";
 import style from "./ForecastChart.module.scss";
 import { dateToHour, dateToNow } from "../../helpers/convertDate";
 import { WeatherIcon } from "../../../icons/WeatherIcon";
-import { WeatherHourly, useGetWeather } from "../../api/hooks";
+import { useGetWeather } from "../../api/hooks";
 import clsx from "clsx";
-import { useLocation } from "../../../store";
+import { useLocation } from "../../../store/store";
 
 export const ForecastChart = () => {
   const location = useLocation((state) => state.location);

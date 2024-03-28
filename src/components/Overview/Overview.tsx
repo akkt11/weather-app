@@ -3,7 +3,7 @@ import { Typography } from "../../shared/ui/Typography/Typography";
 import { LocationIcon } from "../../icons/LocationIcon";
 import { ChevronIcon } from "../../icons/ChevronIcon";
 import { Button } from "../../shared/ui/Button/Button";
-import { useLocation, useSelectedWeather } from "../../store";
+import { useLocation, useSelectedWeather } from "../../store/store";
 import { dateToDMY, dateToWeekDay } from "../../shared/helpers/convertDate";
 import { WeatherIcon } from "../../icons/WeatherIcon";
 import style from "./Overview.module.scss";

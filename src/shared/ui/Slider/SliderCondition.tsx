@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Typography } from "../Typography/Typography";
 import { useGetWeather } from "../../api/hooks";
 import { dateToDMY, dateToWeekDay } from "../../helpers/convertDate";
-import { useLocation, useSelectedWeather } from "../../../store";
+import { useLocation, useSelectedWeather } from "../../../store/store";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/effect-coverflow";

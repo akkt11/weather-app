@@ -1,37 +1,11 @@
-import { MouseEvent } from "react";
-import {
-  GeocodeData,
-  WeatherDaily,
-  WeatherData,
-  WeatherHourly,
-} from "./shared/api/hooks";
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { devtools } from "zustand/middleware";
 import { toast } from "react-toastify";
-
-interface SelectedWeatherState {
-  selectedWeather: WeatherDaily | null;
-  setSelectedWeather: (selectedWeather?: WeatherDaily) => void;
-}
-interface LocationState {
-  location: string;
-  setLocation: (city_name?: string) => void;
-}
-
-interface FavoriteLocationState {
-  isFavorite: boolean;
-  localFavoriteData: LocalFavoriteState[];
-  setLocalFavoriteData: (newFavorite: LocalFavoriteState[]) => void;
-  addFavorite: (geocodeData?: GeocodeData, weatherData?: WeatherData) => void;
-  removeFavorite: (e: MouseEvent, favorite: LocalFavoriteState) => void;
-  checkFavorite: (geocodeData?: GeocodeData) => void;
-}
-interface LocalFavoriteState {
-  main?: string;
-  addition?: string[];
-  latitude?: number;
-  longitude?: number;
-}
+import {
+  SelectedWeatherState,
+  LocationState,
+  FavoriteLocationState,
+} from "./store.types";
 
 export const useSelectedWeather = create<SelectedWeatherState>()(
   devtools((set) => ({

@@ -10,7 +10,7 @@ import style from "./ModalLocation.module.scss";
 import { Typography } from "../Typography/Typography";
 import { SearchIcon } from "../../../icons/SearchIcon";
 import { Button } from "../Button/Button";
-import { useFavoriteLocation, useLocation } from "../../../store";
+import { useFavoriteLocation, useLocation } from "../../../store/store";
 import clsx from "clsx";
 import { useGetWeather } from "../../api/hooks";
 import { MinusIcon } from "../../../icons/MinusIcon";
