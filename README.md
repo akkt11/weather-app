@@ -4,21 +4,23 @@ WeatherApp is an easy way to check what the current and future weather is, with 
 
 ## Features
 
-- **Search Location**: See the weather for the city of your choice
-- **Favorites**: Save the weather in the city you often watch
-- **24-Hour Forecast**: Detailed forecast for today using a carousel
-- **Condition Panel**: Change days and see what's up with the AC
-- **Responsiveness**: A convenient way to view the weather using mobile devices
+- **Search Location**: Easily access weather information for any city by searching
+- **Favorites**: Quick access to favorite locations
+- **24-Hour Forecast**: Detailed forecast for today using a chart
+- **Condition Panel**: Switch days and view detailed weather conditions
+- **Responsiveness**: Seamless user experience across all devices
 
 ## Tech Stack
 
 - [React](https://react.dev) - Framework
 - [Typescript](https://www.typescriptlang.org/) - Language
 - [SCSS](https://sass-scss.ru/guide/) - Styling
+- [Zustand](https://zustand-demo.pmnd.rs/) - State management
 - [React-Query](https://tanstack.com/query/latest/docs/framework/react/overview) - Data
 - [Axios](https://axios-http.com/ru/docs/intro) - Fetching
-- [chart.js](https://www.chartjs.org/) - Visualization
-- [swiper.js](https://swiperjs.com/) - Carousel
+- [Recharts](https://recharts.org) - Chart
+- [swiper.js](https://swiperjs.com/) - Slider
+- [Toastify](https://www.npmjs.com/package/react-toastify) - Notification
 
 ## Getting Started
 
