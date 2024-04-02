@@ -10,6 +10,9 @@ WeatherApp is an easy way to check what the current and future weather is, with 
 - **Condition Panel**: Switch days and view detailed weather conditions
 - **Responsiveness**: Seamless user experience across all devices
 
+## Features
+![](https://github.com/akkt11/weather-app/blob/main/review.gif)
+
 ## Tech Stack
 
 - [React](https://react.dev) - Framework
