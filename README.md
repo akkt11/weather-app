@@ -24,6 +24,12 @@ WeatherApp is an easy way to check what the current and future weather is, with 
 
 ## Getting Started
 
+### Prerequisites
+
+Here's what you need to be able to run WeatherApp:
+
+- API-key (https://home.openweathermap.org/api_keys)
+
 ### 1. Clone the repository
 
 ```
@@ -37,12 +43,18 @@ cd weather-app
 yarn install
 ```
 
-### 3. Run the dev server
+### 3. Get and insert your api key in env file
+
+```
+VITE_API_KEY="your api-key"
+```
+
+### 4. Run the dev server
 
 ```
 yarn run dev
 ```
 
-### 4. Open the app in your browser
+### 5. Open the app in your browser
 
 Visit http://localhost:3000 in your browser.
