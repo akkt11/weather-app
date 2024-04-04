@@ -1,14 +1,25 @@
 import axios from "axios";
 
-const axiosApi = axios.create({
-  baseURL: process.env.VITE_API_URL,
+const weatherApi = axios.create({
+  baseURL: process.env.VITE_WEATHER_API_URL,
 });
 
-axiosApi.interceptors.request.use(
-  async (config) => {
+weatherApi.interceptors.request.use(
+  async config => {
     return config;
   },
-  (error) => Promise.reject(error)
+  error => Promise.reject(error),
 );
 
-export { axiosApi };
+const geolocationApi = axios.create({
+  baseURL: process.env.VITE_GEOLOCATION_API_URL,
+});
+
+geolocationApi.interceptors.request.use(
+  async config => {
+    return config;
+  },
+  error => Promise.reject(error),
+);
+
+export { geolocationApi, weatherApi };

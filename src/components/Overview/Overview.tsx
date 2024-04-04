@@ -1,18 +1,19 @@
 import { FC } from "react";
-import { Typography } from "../../shared/ui/Typography/Typography";
+
 import { ChevronIcon } from "../../icons/ChevronIcon";
-import { Button } from "../../shared/ui/Button/Button";
-import { useLocation, useSelectedWeather } from "../../store/store";
-import { WeatherIcon } from "../../icons/WeatherIcon";
-import style from "./Overview.module.scss";
-import { ModalLocation } from "../../shared/ui/Modal/ModalLocation";
-import { useDetectClickOut } from "../../shared/helpers/useDetectClickOut";
-import { useGetWeather } from "../../shared/api/hooks";
 import { MenuIcon } from "../../icons/MenuIcon";
+import { WeatherIcon } from "../../icons/WeatherIcon";
+import { useGetWeather } from "../../shared/api/hooks";
+import { useDetectClickOut } from "../../shared/helpers/useDetectClickOut";
+import { Button } from "../../shared/ui/Button/Button";
+import { ModalLocation } from "../../shared/ui/Modal/ModalLocation";
+import { Typography } from "../../shared/ui/Typography/Typography";
+import { useLocation, useSelectedWeather } from "../../store/store";
+import style from "./Overview.module.scss";
 
 export const Overview: FC = () => {
-  const selectedWeather = useSelectedWeather((state) => state.selectedWeather);
-  const location = useLocation((state) => state.location);
+  const selectedWeather = useSelectedWeather(state => state.selectedWeather);
+  const location = useLocation(state => state.location);
   const { weatherData } = useGetWeather(location);
   const { show, nodeRef, triggerRef } = useDetectClickOut(false);
 
@@ -31,9 +32,7 @@ export const Overview: FC = () => {
 
                 <Button ref={triggerRef} className={style.actionButton}>
                   <Typography variant="link" weight="medium" ellipsis={true}>
-                    {weatherData?.fullLocation
-                      .filter((item) => item)
-                      .join(", ")}
+                    {weatherData?.fullLocation.filter(item => item).join(", ")}
                   </Typography>
 
                   <ChevronIcon />
@@ -71,7 +70,7 @@ export const Overview: FC = () => {
 
               <div className={style.mainDate}>
                 <Typography variant="h4" className={style.dateText}>
-                  {selectedWeather?.fullDate.filter((item) => item).join(" | ")}
+                  {selectedWeather?.fullDate.filter(item => item).join(" | ")}
                 </Typography>
               </div>
             </div>

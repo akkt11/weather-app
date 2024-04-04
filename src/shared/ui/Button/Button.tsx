@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
 import clsx from "clsx";
-import { ButtonProps } from "./types/Button.types";
+import { forwardRef } from "react";
+
 import styles from "./Button.module.scss";
+import { ButtonProps } from "./types/Button.types";
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
@@ -26,5 +27,5 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {children}
       </button>
     );
-  }
+  },
 );

@@ -1,16 +1,18 @@
+import clsx from "clsx";
 import { LabelList, Line, LineChart } from "recharts";
+
+import { WeatherIcon } from "../../../icons/WeatherIcon";
+import { useLocation } from "../../../store/store";
+import { useGetWeather } from "../../api/hooks";
+import { dateToHour, dateToNow } from "../../helpers/convertDate";
 import { Typography } from "../Typography/Typography";
 import style from "./ForecastChart.module.scss";
-import { dateToHour, dateToNow } from "../../helpers/convertDate";
-import { WeatherIcon } from "../../../icons/WeatherIcon";
-import { useGetWeather } from "../../api/hooks";
-import clsx from "clsx";
-import { useLocation } from "../../../store/store";
 
 export const ForecastChart = () => {
-  const location = useLocation((state) => state.location);
+  const location = useLocation(state => state.location);
   const { weatherData } = useGetWeather(location);
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const customizedLabel = (props: any) => {
     const { x, y, index } = props;
     const { dt, temp, condition, wind_speed } =
@@ -34,7 +36,9 @@ export const ForecastChart = () => {
 
           <div className={style.degreeDetails}>
             <WeatherIcon condition={condition} />
-            <Typography variant="caption">{`${wind_speed}km/h`}</Typography>
+            <Typography variant="caption" symbol="km">
+              {wind_speed}
+            </Typography>
             <Typography variant="caption">
               {isCurrentHour ? isCurrentHour : dateToHour(dt)}
             </Typography>

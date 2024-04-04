@@ -1,14 +1,16 @@
-import ReactDOM from "react-dom/client";
-import { Home } from "./components/Home/Home.tsx";
+import "./styles/index.scss";
+import "react-toastify/ReactToastify.css";
+
 import {
   QueryCache,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import "./styles/index.scss";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/ReactToastify.css";
+import ReactDOM from "react-dom/client";
+import { toast, ToastContainer } from "react-toastify";
+
+import { Home } from "./components/Home/Home.tsx";
 
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
@@ -30,5 +32,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     />
     <Home />
     <ReactQueryDevtools buttonPosition="bottom-left" />
-  </QueryClientProvider>
+  </QueryClientProvider>,
 );

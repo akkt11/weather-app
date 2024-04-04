@@ -1,9 +1,10 @@
 import clsx from "clsx";
-import { FC, ReactNode, createElement } from "react";
+import { createElement, FC, ReactNode } from "react";
+
 import { ITags, TypographyProps } from "./types/Typography.types";
 import style from "./Typography.module.scss";
 
-export const Typography: FC<TypographyProps> = (props) => {
+export const Typography: FC<TypographyProps> = props => {
   const {
     variant,
     weight = "regular",
@@ -32,7 +33,7 @@ export const Typography: FC<TypographyProps> = (props) => {
     style[weight],
     style[color],
     { [style.ellipsis]: ellipsis },
-    className
+    className,
   );
 
   const formatString = (word: ReactNode) => {
@@ -69,6 +70,6 @@ export const Typography: FC<TypographyProps> = (props) => {
     Tags[variant as keyof ITags],
     { className: classNameGenerated },
     format ? formatString(children) : children,
-    symbol ? showSymbol(symbol) : null
+    symbol ? showSymbol(symbol) : null,
   );
 };

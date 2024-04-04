@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+
 import {
   GeocodeData,
   WeatherDaily,
@@ -25,6 +27,9 @@ export interface FavoriteLocationState {
   localFavoriteData: LocalFavoriteState[];
   setLocalFavoriteData: (newFavorite: LocalFavoriteState[]) => void;
   addFavorite: (geocodeData?: GeocodeData, weatherData?: WeatherData) => void;
-  removeFavorite: (e: MouseEvent, favorite: LocalFavoriteState) => void;
+  removeFavorite: (
+    e: MouseEvent<HTMLButtonElement>,
+    favorite: LocalFavoriteState,
+  ) => void;
   checkFavorite: (geocodeData?: GeocodeData) => void;
 }

@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { Typography } from "../../shared/ui/Typography/Typography";
+
 import { ClockIcon } from "../../icons/ClockIcon";
 import { Button } from "../../shared/ui/Button/Button";
 import { ForecastChart } from "../../shared/ui/Chart/ForecastChart";
+import { Typography } from "../../shared/ui/Typography/Typography";
 import style from "./Forecast.module.scss";
 
 export const Forecast: FC = () => {

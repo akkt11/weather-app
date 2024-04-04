@@ -1,25 +1,26 @@
+import { toast } from "react-toastify";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { toast } from "react-toastify";
+
 import {
-  SelectedWeatherState,
-  LocationState,
   FavoriteLocationState,
+  LocationState,
+  SelectedWeatherState,
 } from "./store.types";
 
 export const useSelectedWeather = create<SelectedWeatherState>()(
-  devtools((set) => ({
+  devtools(set => ({
     selectedWeather: null,
-    setSelectedWeather: (selectedWeather) =>
+    setSelectedWeather: selectedWeather =>
       set({ selectedWeather: selectedWeather }),
-  }))
+  })),
 );
 
 export const useLocation = create<LocationState>()(
-  devtools((set) => ({
-    location: "Bishkek",
-    setLocation: (location) => set({ location: location }),
-  }))
+  devtools(set => ({
+    location: "",
+    setLocation: location => set({ location: location }),
+  })),
 );
 
 export const useFavoriteLocation = create<FavoriteLocationState>()(
@@ -27,7 +28,7 @@ export const useFavoriteLocation = create<FavoriteLocationState>()(
     isFavorite: false,
     localFavoriteData:
       JSON.parse(localStorage.getItem("favoriteLocation") as string) || [],
-    setLocalFavoriteData: (newFavorite) => {
+    setLocalFavoriteData: newFavorite => {
       localStorage.setItem("favoriteLocation", JSON.stringify(newFavorite));
       set({ localFavoriteData: newFavorite });
     },
@@ -38,7 +39,7 @@ export const useFavoriteLocation = create<FavoriteLocationState>()(
         newFavorite.push(...get().localFavoriteData, {
           main: weatherData.fullLocation[0],
           addition: weatherData.fullLocation.filter(
-            (item, index) => item && index !== 0
+            (item, index) => item && index !== 0,
           ),
           latitude: geocodeData.lat,
           longitude: geocodeData.lon,
@@ -53,19 +54,19 @@ export const useFavoriteLocation = create<FavoriteLocationState>()(
       e.stopPropagation();
 
       const newFavorite = get().localFavoriteData.filter(
-        (item) =>
+        item =>
           item.latitude !== favorite.latitude &&
-          item.longitude !== favorite.longitude
+          item.longitude !== favorite.longitude,
       );
 
       get().setLocalFavoriteData(newFavorite);
     },
-    checkFavorite: (geocodeData) => {
+    checkFavorite: geocodeData => {
       if (geocodeData) {
         const isFavorite = get().localFavoriteData.some(
-          (item) =>
+          item =>
             item.latitude === geocodeData.lat &&
-            item.longitude === geocodeData.lon
+            item.longitude === geocodeData.lon,
         );
 
         set({ isFavorite: isFavorite });
@@ -73,5 +74,5 @@ export const useFavoriteLocation = create<FavoriteLocationState>()(
         toast.error("Failed to sync favorites");
       }
     },
-  }))
+  })),
 );

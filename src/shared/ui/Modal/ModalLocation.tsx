@@ -1,19 +1,18 @@
-import {
-  FormEvent,
-  forwardRef,
-  useEffect,
-  useState,
-} from "react";
-import style from "./ModalLocation.module.scss";
-import { Typography } from "../Typography/Typography";
-import { SearchIcon } from "../../../icons/SearchIcon";
-import { Button } from "../Button/Button";
-import { useFavoriteLocation, useLocation } from "../../../store/store";
+import { useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
-import { useGetWeather } from "../../api/hooks";
+import { FormEvent, forwardRef, useEffect, useState } from "react";
+
+import { CurrentLocationIcon } from "../../../icons/CurrentLocationIcon";
 import { MinusIcon } from "../../../icons/MinusIcon";
+import { SearchIcon } from "../../../icons/SearchIcon";
+import { useFavoriteLocation, useLocation } from "../../../store/store";
+import { useGetWeather } from "../../api/hooks";
+import { Button } from "../Button/Button";
+import { Typography } from "../Typography/Typography";
+import style from "./ModalLocation.module.scss";
 
 export const ModalLocation = forwardRef<HTMLMenuElement>((_, ref) => {
+  const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
 
@@ -23,14 +22,14 @@ export const ModalLocation = forwardRef<HTMLMenuElement>((_, ref) => {
     addFavorite,
     removeFavorite,
     checkFavorite,
-  } = useFavoriteLocation((state) => ({
+  } = useFavoriteLocation(state => ({
     isFavorite: state.isFavorite,
     localFavoriteData: state.localFavoriteData,
     addFavorite: state.addFavorite,
     removeFavorite: state.removeFavorite,
     checkFavorite: state.checkFavorite,
   }));
-  const { location, setLocation } = useLocation((state) => ({
+  const { location, setLocation } = useLocation(state => ({
     location: state.location,
     setLocation: state.setLocation,
   }));
@@ -64,8 +63,16 @@ export const ModalLocation = forwardRef<HTMLMenuElement>((_, ref) => {
           value={search}
           type="text"
           placeholder="Search for location"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={e => setSearch(e.target.value)}
         />
+
+        <Button
+          onClick={() =>
+            queryClient.invalidateQueries({ queryKey: ["weather"] })
+          }
+        >
+          <CurrentLocationIcon />
+        </Button>
 
         <Button onClick={handleSearch}>
           <SearchIcon />
@@ -99,7 +106,7 @@ export const ModalLocation = forwardRef<HTMLMenuElement>((_, ref) => {
             </Typography>
 
             <Typography variant="paragraph" ellipsis={true}>
-              {weatherData?.fullLocation.filter((item) => item).join(", ")}
+              {weatherData?.fullLocation.filter(item => item).join(", ")}
             </Typography>
           </li>
 
@@ -122,7 +129,7 @@ export const ModalLocation = forwardRef<HTMLMenuElement>((_, ref) => {
                   </Typography>
                 </div>
 
-                <Button onClick={(e) => removeFavorite(e, item)}>
+                <Button onClick={e => removeFavorite(e, item)}>
                   <MinusIcon />
                 </Button>
               </li>

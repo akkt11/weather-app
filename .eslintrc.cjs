@@ -1,16 +1,44 @@
 module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
+  env: {
+    browser: true,
+    es2021: true,
+  },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/jsx-runtime",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: [".eslintrc.{js,cjs}"],
+      parserOptions: {
+        sourceType: "script",
+      },
+    },
+  ],
   parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh", "unused-imports"],
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
+  plugins: [
+    "@typescript-eslint",
+    "react",
+    "simple-import-sort",
+    "unused-imports",
+  ],
   rules: {
-    "no-unused-vars": "off",
+    "react/display-name": "off",
+    "react/prop-types": "off",
+    "no-var": "error",
+    "prefer-const": "warn",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
@@ -21,9 +49,11 @@ module.exports = {
         argsIgnorePattern: "^_",
       },
     ],
-    "react-refresh/only-export-components": [
+    "prettier/prettier": [
       "warn",
-      { allowConstantExport: true },
+      {
+        endOfLine: "auto",
+      },
     ],
   },
 };
